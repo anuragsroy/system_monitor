@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: monitoring-backend-pod
+  labels:
+    name: monitoring-backend-pod
+    tier: backend
+spec:
+  containers:
+  - name: monitoring-backend-container
+    image: anuragsharmaroy/docker-assignment-repo:image-tag2

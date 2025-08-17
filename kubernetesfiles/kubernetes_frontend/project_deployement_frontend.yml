@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: monitoring-frontend-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: monitoring-frontend-deployment
+  template:
+    metadata:
+      labels:
+        app: monitoring-frontend-deployment
+    spec:
+      containers:
+      - name: monitoring-frontend-container
+        image: anuragsharmaroy/docker-assignment-repo:image-tag
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"

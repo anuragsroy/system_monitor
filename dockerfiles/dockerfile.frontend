@@ -1,0 +1,11 @@
+FROM ubuntu
+RUN apt update
+RUN apt install -y npm
+RUN npx create-react-app metrics-dashboard
+WORKDIR /metrics-dashboard
+RUN npm install chart.js react-chartjs-2
+COPY App.css /src
+RUN rm -rf /src/App.js
+COPY App.js /src
+CMD ["npm", "start"]
+EXPOSE 3000

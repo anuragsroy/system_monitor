@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: monitoring-frontend-pod
+  labels:
+    name: monitoring-frontend-pod
+    tier: frontend
+spec:
+  containers:
+  - name: monitoring-frontend-container
+    image: anuragsharmaroy/docker-assignment-repo:image-tag
