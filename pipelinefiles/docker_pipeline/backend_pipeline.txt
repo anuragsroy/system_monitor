@@ -1,0 +1,22 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Git import') {
+            steps {
+                git branch: 'main', url: 'https://github.com/anuragsroy/python-project-files.git'
+            }
+        }
+         
+         stage('docker build') {
+            steps {
+                bat "docker build -t project-backend-image ."
+            }
+        }
+        stage('docker container') {
+            steps {
+                bat "docker run -i -dp 8000:8000 --name=project-backend-container project-backend-image"
+            }
+        }
+    }
+}

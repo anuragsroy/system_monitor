@@ -1,0 +1,22 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Git import') {
+            steps {
+                git branch: 'main', url: 'https://github.com/anuragsroy/react-files-frontend.git'
+            }
+        }
+         
+         stage('docker build') {
+            steps {
+                bat "docker build -t project-frontend-image ."
+            }
+        }
+        stage('docker container') {
+            steps {
+                bat "docker run -i -dp 3001:3001 --name=project-frontend-container project-frontend-image"
+            }
+        }
+    }
+}

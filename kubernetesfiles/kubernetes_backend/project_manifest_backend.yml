@@ -9,3 +9,16 @@ spec:
   containers:
   - name: monitoring-backend-container
     image: anuragsharmaroy/docker-assignment-repo:image-tag2
+    resources:
+      requests:
+        memory: "128Mi"
+        cpu: "250m"
+      limits:
+        memory: "256Mi"
+        cpu: "500m"
+    env:
+        - name: monitoring-backend-configmap
+          valueFrom:
+            configMapKeyRef:
+              name: monitoring-backend-configmap
+              key: monitoring-backend-configmap

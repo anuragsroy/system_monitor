@@ -1,0 +1,33 @@
+pipeline {
+    agent any
+
+    stages {
+	stage('minikube') {
+            steps {
+                bat 'minikube start'
+            }
+        }
+
+        stage('git import') {
+            steps {
+                git branch: 'main', url: 'https://github.com/anuragsroy/yaml-files-frontend.git'
+            }
+        }
+        stage('pod creation') {
+            steps {
+                bat 'kubectl apply -f project_manifest_frontend.yml'
+            }
+        }
+    
+        stage('service creation') {
+            steps {
+                bat 'kubectl apply -f project_service_frontend.yml'
+            }
+        }
+        stage('deployment creation') {
+            steps {
+                bat 'kubectl apply -f project_deployment_frontend.yml'
+            }
+        }
+    }
+}
