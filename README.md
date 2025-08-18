@@ -27,5 +27,13 @@
           - Accessible in http://localhost:3000.
 
 
+**Pod monitoring Dashboard**
+
+I have used the Kubernetes dashboard to monitor the workloads.
+
+-> minikube addons enable dashboard
+-> minikube dashboard
+
+
 
          
